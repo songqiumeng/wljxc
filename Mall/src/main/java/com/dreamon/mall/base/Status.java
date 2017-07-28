@@ -11,6 +11,10 @@ public interface Status {
     int PARAM_EMPTY = 400;
     String PARAM_EMPTY_STR = "参数为null";
 
+    //短信相关状态
+    int MSG_SEND_FAIL = 500;
+    String MSG_SEND_FAIL_STR = "验证码短信发送失败";
+
     //数据库相关状态
     int DB_EMPTY_UPDATE_PARAM = 600;
     String DB_EMPTY_UPDATE_PARAM_STR = "更新数据时参数为空集合";

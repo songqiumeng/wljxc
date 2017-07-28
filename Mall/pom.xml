@@ -157,8 +157,14 @@
     <!--阿里云短信-->
     <dependency>
       <groupId>ali</groupId>
-      <artifactId>core</artifactId>
-      <version>1.0.0</version>
+      <artifactId>aliyun-java-sdk-core</artifactId>
+      <version>3.2.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ali</groupId>
+      <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+      <version>1.0.0-SANPSHOT</version>
     </dependency>
 
   </dependencies>

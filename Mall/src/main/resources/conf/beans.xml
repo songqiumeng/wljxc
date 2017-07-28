@@ -5,6 +5,22 @@
                     http://www.springframework.org/schema/beans
                     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
+    <!--json映射对象-->
     <bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper"></bean>
+
+    <!--短信服务对象-->
+    <bean id="msgService" class="com.dreamon.mall.service.MessageService">
+        <constructor-arg name="accessKeyId" value="${msg.accessKeyId}"/>
+        <constructor-arg name="accessKeySecret" value="${msg.accessKeySecret}"/>
+        <constructor-arg name="defaultConnectTimeoutIndex" value="${msg.defaultConnectTimeoutIndex}"/>
+        <constructor-arg name="defaultConnectTimeoutValue" value="${msg.defaultConnectTimeoutValue}"/>
+        <constructor-arg name="defaultReadTimeoutIndex" value="${msg.defaultReadTimeoutIndex}"/>
+        <constructor-arg name="defaultReadTimeoutValue" value="${msg.defaultReadTimeoutValue}"/>
+        <constructor-arg name="domain" value="${msg.domain}"/>
+        <constructor-arg name="product" value="${msg.product}"/>
+        <constructor-arg name="msgName" value="${msg.msgName}"/>
+        <constructor-arg name="templeteCode" value="${msg.templeteCode}"/>
+        <constructor-arg name="contentName" value="${msg.contentName}"/>
+    </bean>
 
 </beans>
