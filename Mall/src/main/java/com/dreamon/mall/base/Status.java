@@ -14,6 +14,16 @@ public interface Status {
     //短信相关状态
     int MSG_SEND_FAIL = 500;
     String MSG_SEND_FAIL_STR = "验证码短信发送失败";
+    int MSG_ILLAGEL_PHONE_NUMBER = 501;
+    String MSG_ILLAGEL_PHONE_NUMBER_STR = "电话号码不合法";
+
+    //验证码状态
+    int ICS_PHONE_NOT_REGISTED = 550;
+    String ICS_PHONE_NOT_REGISTED_STR= "手机未申请过验证码";
+    int ICS_OUT_OF_TIME = 551;
+    String ICS_OUT_OF_TIME_STR = "验证码过期";
+    int ICS_WRONG_NUMBER = 552;
+    String ICS_WRONG_NUMBER_STR = "验证码错误";
 
     //数据库相关状态
     int DB_EMPTY_UPDATE_PARAM = 600;

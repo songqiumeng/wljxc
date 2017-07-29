@@ -2,6 +2,7 @@ package com.dreamon.test;
 
 import com.aliyuncs.exceptions.ClientException;
 import com.dreamon.mall.exception.MessageException;
+import com.dreamon.mall.exception.OutException;
 import com.dreamon.mall.service.MessageService;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -31,6 +32,9 @@ public class TestMessage {
             e.printStackTrace();
         } catch (MessageException e){
             System.out.printf("短信发送失败");
+            return ;
+        } catch (OutException e){
+            System.out.printf("电话号码不合法");
             return ;
         }
         System.out.printf("短信发送成功");

@@ -8,7 +8,9 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.dreamon.mall.base.Status;
+import com.dreamon.mall.exception.IllegalArguementException;
 import com.dreamon.mall.exception.MessageException;
+import com.dreamon.mall.exception.OutException;
 
 /**
  * 短息服务(已经在beans.xml中定义了该bean，ID为msgService
@@ -70,15 +72,19 @@ public class MessageService implements Status {
     private IAcsClient acsClient;
     private SendSmsRequest request;
 
+    public static final int MSG_REGISTER_MODEL = 1;
+    public static final int MSG_FIND_MODEL = 2;
 
     /**
      * 发送验证码短信接口
      * @param telephone 目标电话号码
      * @param code 验证码
+     * @param messageModel 短信模板
      * @throws ClientException
      * @throws MessageException 验证码短信发送出错时抛出此异常
+     * @throws OutException 电话号码不合法时抛出此异常
      */
-    public void sendIdcodeMessage(String telephone,String code) throws ClientException,MessageException {
+    public void sendIdcodeMessage(String telephone,String code,int messageModel) throws ClientException,MessageException,OutException {
 
         //组装请求对象
         request = new SendSmsRequest();
@@ -97,10 +103,15 @@ public class MessageService implements Status {
 //        request.setOutId("yourOutId");
 //请求失败这里会抛ClientException异常
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
-        boolean result = sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK");
         System.out.printf(sendSmsResponse.getCode()+"      "+sendSmsResponse.getMessage());
+        //电话号码是否合法
+        if (sendSmsResponse.getCode() .equals("isv.MOBILE_NUMBER_ILLEGAL"))
+            throw new OutException(MSG_ILLAGEL_PHONE_NUMBER,MSG_ILLAGEL_PHONE_NUMBER_STR);
+        //短信是否发送成功
+        boolean result = sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK");
         if(!result)
             throw new MessageException(MSG_SEND_FAIL,MSG_SEND_FAIL_STR);
+
     }
 
 }

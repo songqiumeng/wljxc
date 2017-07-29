@@ -23,4 +23,11 @@
         <constructor-arg name="contentName" value="${msg.contentName}"/>
     </bean>
 
+    <!--验证码对象-->
+    <bean id="idCodeService" class="com.dreamon.mall.service.IdCodeService">
+        <constructor-arg name="idCodeLastTime" value="${ics.idCodeLastTime}"/>
+        <constructor-arg name="idCodeLength" value="${ics.idCodeLength}"/>
+        <constructor-arg name="idCodeType" value="${ics.idCodeType}"/>
+    </bean>
+
 </beans>
