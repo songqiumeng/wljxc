@@ -27,7 +27,7 @@ public class TestMessage {
     public void sendMessage(){
 //        assertNotNull(msgService);
         try {
-            msgService.sendIdcodeMessage("15616034790","123456");
+            msgService.sendIdcodeMessage("15616034790","123456",MessageService.MSG_REGISTER_MODEL);
         } catch (ClientException e){
             e.printStackTrace();
         } catch (MessageException e){

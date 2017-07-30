@@ -10,8 +10,9 @@ create table wljxc_userinfo(
 	address text not null comment "用户地址",
 	phone varchar(255) not null comment "电话",
 	email varchar(255) comment "邮箱",
-	comments text comment "其他联系方式，json格式",
+	contact text comment "其他联系方式，json格式",
 	totallimit int not null comment "信用额度" default 0,
 	uselimit int not null comment "使用额度" default 0,
-	headimg int comment "用户头像"
+	headimg int default 0 comment "用户头像",
+	headimgurl varchar(10000) DEFAULT "",
 ) charset=utf8;

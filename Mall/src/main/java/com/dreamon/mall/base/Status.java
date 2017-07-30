@@ -8,8 +8,23 @@ public interface Status {
     int OK = 0;
     String OK_STR = "OK";
 
+    int IN_SAME_TELEPHONE = 100;
+    String IN_SAME_TELEPHONE_STR = "电话号码被注册了两次";
+
+    //注册状态
+    int RS_TELEPHONE_REGISTERED = 200;
+    String RS_TELEPHONE_REGISTERED_STR = "电话号码已经被注册";
+    int RS_FAIL = 201;
+    String RS_FAIL_STR = "注册失败";
+
+    //登录状态
+    int LG_USER_NOT_EXITED = 250;
+    String LG_USER_NOT_EXITED_STR = "用户不存在";
+    int LG_PASSWORD_WRONG = 251;
+    String LG_PASSWORD_WRONG_STR = "密码错误";
+
     int PARAM_EMPTY = 400;
-    String PARAM_EMPTY_STR = "参数为null";
+    String PARAM_EMPTY_STR = "参数不完整";
 
     //短信相关状态
     int MSG_SEND_FAIL = 500;
@@ -24,6 +39,8 @@ public interface Status {
     String ICS_OUT_OF_TIME_STR = "验证码过期";
     int ICS_WRONG_NUMBER = 552;
     String ICS_WRONG_NUMBER_STR = "验证码错误";
+    int ICS_WRONG = 553;
+    String ICS_WRONG_STR = "验证码检验失败";
 
     //数据库相关状态
     int DB_EMPTY_UPDATE_PARAM = 600;

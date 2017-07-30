@@ -1,6 +1,7 @@
 package com.dreamon.mall.db.entity;
 
 import com.dreamon.mall.base.BaseEntity;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Userinfo extends BaseEntity {
 
     @Id
     private int id;
-    private String number;
+    private int number;
     private String name;
     private String password;
     private String realname;
@@ -48,7 +49,11 @@ public class Userinfo extends BaseEntity {
     private int headImg;
     private String headImgUrl;
 
-    public Userinfo(int id, String number, String name, String password, String realname, String nickname, int state, int type, String address, String phone, String email, String contact, int totalLimit, int useLimit, int headImg, String headImgUrl) {
+    public Userinfo(String name, String password) {
+        this(0,name,password,"","",0,0,"未填写",name,"","",0,0,0,"");
+    }
+
+    public Userinfo(int id, int number, String name, String password, String realname, String nickname, int state, int type, String address, String phone, String email, String contact, int totalLimit, int useLimit, int headImg, String headImgUrl) {
         this.id = id;
         this.number = number;
         this.name = name;
@@ -67,7 +72,7 @@ public class Userinfo extends BaseEntity {
         this.headImgUrl = headImgUrl;
     }
 
-    public Userinfo(String number, String name, String password, String realname, String nickname, int state, int type, String address, String phone, String email, String contact, int totalLimit, int useLimit, int headImg, String headImgUrl) {
+    public Userinfo(int number, String name, String password, String realname, String nickname, int state, int type, String address, String phone, String email, String contact, int totalLimit, int useLimit, int headImg, String headImgUrl) {
         this.number = number;
         this.name = name;
         this.password = password;
@@ -97,11 +102,11 @@ public class Userinfo extends BaseEntity {
         this.id = id;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

@@ -13,7 +13,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import javax.persistence.Entity;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,7 +21,6 @@ import java.util.Set;
  * Created by qiumengsong on 2017/7/27.
  */
 @Component
-@Aspect
 public class BaseDao implements Status {
 
     @Resource
@@ -34,7 +33,8 @@ public class BaseDao implements Status {
     /**
      * 添加一条数据,不用传入id
      * @param entity
-     * @throws BaseException id重复是抛出此异常
+     * @throws BaseException id或者name重复时抛出此异常
+     * @throws IllegalArguementException 传入参数为null时抛出此异常
      */
     public void add(BaseEntity entity) throws DaoException,IllegalArguementException{
         if (entity == null){
@@ -45,6 +45,7 @@ public class BaseDao implements Status {
             session.save(entity);
             after();
         } catch (JDBCException e){
+            e.printStackTrace();
             throw new DaoException(DB_ADD_FAIL,DB_ADD_FAIL_STR);
         }
     }
@@ -61,6 +62,19 @@ public class BaseDao implements Status {
         BaseEntity result = (BaseEntity)session.get(entity.getClass(),entity.getId());
         after();
         return result;
+    }
+
+    public List<BaseEntity> getAll(BaseEntity entity,int pageIdex,int pageSize){
+        before();
+        Query query = toSelectSql(entity.getMessage(),entity.getClass());
+        if (pageIdex >= 0 && pageSize > 0) {
+            //设置分页
+            query.setFirstResult(pageIdex*pageSize);
+            query.setMaxResults(pageSize);
+        }
+        List list = query.list();
+        after();
+        return list;
     }
 
     /**
@@ -125,7 +139,7 @@ public class BaseDao implements Status {
         Set<String> index = paramMap.keySet();
         if (index.size() != 0){
             //添加where
-            sql += " where ";
+            sql += " where 1=1";
             for (String indexStr:
                     index) {
                 sql += (" and "+indexStr + "=:" + indexStr);

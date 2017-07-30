@@ -3,6 +3,7 @@ package com.dreamon.mall.base;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Created by qiumengsong on 2017/7/26.
@@ -12,7 +13,7 @@ public abstract class BaseEntity {
     //entity对象中包含的信息
     private Map<String,Object> message = new HashMap();
 
-    protected static HashSet<String> column;
+    protected static Set<String> column = new HashSet<String>();
 
     public Map<String, Object> getMessage() {
         return message;

@@ -6,13 +6,14 @@ import static org.junit.Assert.*;
 import com.dreamon.mall.base.BaseEntity;
 import com.dreamon.mall.base.BaseException;
 import com.dreamon.mall.db.entity.Demo;
-import org.hibernate.exception.ConstraintViolationException;
+import com.dreamon.mall.db.entity.Userinfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by qiumengsong on 2017/7/28.
@@ -36,14 +37,31 @@ public class TestDao {
 
     @Test
     public void testBaseAdd() {
-        BaseEntity demo = new Demo(3,"admin","嘿嘿");
+//        BaseEntity demo = new Demo(3,"admin","嘿嘿");
+        Userinfo userinfo = new Userinfo("heihei","123456");
         try {
-            baseDao.add(null);
-        } catch (BaseException e){
+            baseDao.add(userinfo);
+        } catch (Exception e){
             e.printStackTrace();
         }
+    }
 
-        System.out.println(demo);
+    private Userinfo userinfo;
+
+    /**
+     * 测试条件查询函数
+     */
+    @Test
+    public void testGetAll(){
+        userinfo = new Userinfo();
+        userinfo.put("name","admin123");
+        List<BaseEntity> queryResult = baseDao.getAll(userinfo,0,0);
+        System.out.println(queryResult);
+    }
+
+    @Test
+    public void testConnection(){
+        baseDao.before();
     }
 
 }

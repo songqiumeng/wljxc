@@ -86,6 +86,32 @@ public class IdCodeService implements Status {
     }
 
     /**
+     * 检查并更新验证码时间
+     * @param phoneNumber
+     * @param idCode
+     * @return
+     * @exception OutException
+     */
+    public void checkAndRefreshIdCode(String phoneNumber,String idCode) throws OutException{
+        isIdCodeUseful(phoneNumber,idCode);
+        refreshIdCode(phoneNumber);
+    }
+
+    /**
+     * 检验并销毁验证码
+     * @param phoneNumber
+     * @param idCode
+     * @return
+     */
+    public boolean checkAndDestoryIdCode(String phoneNumber,String idCode){
+        if (checkIdCode(phoneNumber,idCode)) {
+            idCodeMap.remove(phoneNumber);
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * @param phoneNumber
      * @param idCode
      */
@@ -108,6 +134,18 @@ public class IdCodeService implements Status {
         }
     }
 
+    /**
+     * 更新验证码时间
+     * @param phoneNumber
+     * @throws OutException 电话号码未注册时抛出此异常
+     */
+    public void refreshIdCode(String phoneNumber) throws OutException{
+        IdCode idCode = idCodeMap.get(phoneNumber);
+        if (idCode == null){
+            throw new OutException(ICS_PHONE_NOT_REGISTED,ICS_PHONE_NOT_REGISTED_STR);
+        }
+        idCodeMap.put(phoneNumber,new IdCode(idCode.getContent(),System.currentTimeMillis()));
+    }
 
     //TODO 开启线程清除过期idcode
 
