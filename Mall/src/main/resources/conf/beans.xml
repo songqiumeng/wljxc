@@ -30,4 +30,9 @@
         <constructor-arg name="idCodeType" value="${ics.idCodeType}"/>
     </bean>
 
+    <bean id="numberService" class="com.dreamon.mall.service.NumberService">
+        <constructor-arg name="numberLength" value="${ran.numberLength}"/>
+        <constructor-arg name="numberModel" value="${ran.model.numberOnly}"/>
+    </bean>
+
 </beans>
