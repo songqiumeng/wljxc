@@ -17,18 +17,13 @@ public class Userinfo extends BaseEntity {
 
     static {
         String[] indexes = {"id","number","name","password","realname",
-                            "nickname","state","type","address","phone","email"
+                "nickname","state","type","address","phone","email"
                 ,"contact","totalLimit","useLimit","headImg"
-                };
+        };
         for (String index :
                 indexes) {
             column.add(index);
         }
-    }
-
-    @Override
-    public boolean checkIndex(String index) {
-        return column.contains(index);
     }
 
     @Id

@@ -23,14 +23,14 @@ public class TestDb {
 
     private static ClassPathXmlApplicationContext app;
 
-    @BeforeClass
-    public static void initSpring(){
-        try {
-            app = new ClassPathXmlApplicationContext(new String[]{"classpath:conf/applicationContext.xml"});
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+//    @BeforeClass
+//    public static void initSpring(){
+//        try {
+//            app = new ClassPathXmlApplicationContext(new String[]{"classpath:conf/applicationContext.xml"});
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
     @Resource
     SessionFactory sessionFactory;

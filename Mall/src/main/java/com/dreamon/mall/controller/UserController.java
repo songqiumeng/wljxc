@@ -27,6 +27,10 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/login")
     @ResponseBody
     public String login(String tel,String pwd){
+        if (tel ==null || tel.length() == 0||
+                pwd == null || pwd.length() == 0
+                )
+            return new BaseResponse(PARAM_EMPTY,PARAM_EMPTY_STR).toJsonStr();
         try {
             userModel.login(tel,pwd);
         } catch (OutException e){

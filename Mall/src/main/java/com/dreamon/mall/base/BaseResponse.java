@@ -1,6 +1,7 @@
 package com.dreamon.mall.base;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import java.io.IOException;
@@ -70,12 +71,12 @@ public class BaseResponse {
         content.put(index,obj);
     }
 
-    @Resource
-    private ObjectMapper objectMapper;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     public String toJsonStr() {
         String result = "";
         try {
+            System.out.println(objectMapper);
             result = objectMapper.writeValueAsString(this);
             System.out.println("JSON字符串生成成功");
         } catch (IOException e){

@@ -21,7 +21,6 @@
                 <value>com.dreamon.mall.db.entity</value>
             </list>
         </property>
-
         <property name="hibernateProperties">
             <props>
                 <!--每次删除并创建-->
@@ -35,5 +34,4 @@
         </property>
 
     </bean>
-
 </beans>

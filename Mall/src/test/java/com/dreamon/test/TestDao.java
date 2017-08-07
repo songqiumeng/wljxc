@@ -38,7 +38,7 @@ public class TestDao {
     @Test
     public void testBaseAdd() {
 //        BaseEntity demo = new Demo(3,"admin","嘿嘿");
-        Userinfo userinfo = new Userinfo("heihei","123456");
+        Userinfo userinfo = new Userinfo("15616034790","123456");
         try {
             baseDao.add(userinfo);
         } catch (Exception e){

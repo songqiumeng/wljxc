@@ -27,7 +27,9 @@ public abstract class BaseEntity {
      * 检查传入的index是否合法
      * @return
      */
-    public abstract boolean checkIndex(String index);
+    public boolean checkIndex(String index) {
+        return column.contains(index);
+    }
 
 
     public void put(String index,String value){

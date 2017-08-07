@@ -26,9 +26,9 @@ public class TestIdCode {
         assertNotNull(idCodeService);
         idCodeService.registerIdCode("1234","1561603");
 
-        System.out.println(idCodeService.checkIdCode("1561603","1234"));
-        Thread.sleep(3000);
-        System.out.println(idCodeService.checkIdCode("1561603","1234"));
+        idCodeService.isIdCodeUseful("1561603","1234");
+        Thread.sleep(1000);
+        idCodeService.isIdCodeUseful("1561603","1234");
 
     }
 }

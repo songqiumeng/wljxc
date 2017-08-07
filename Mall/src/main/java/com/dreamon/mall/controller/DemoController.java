@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by qiumengsong on 2017/7/20.
  */
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/demo")
 public class DemoController {
 
     @RequestMapping(value = "/demo")

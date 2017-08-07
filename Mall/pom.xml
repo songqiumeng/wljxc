@@ -154,17 +154,33 @@
       <version>1.9.13</version>
     </dependency>
 
-    <!--阿里云短信-->
-    <dependency>
-      <groupId>ali</groupId>
-      <artifactId>aliyun-java-sdk-core</artifactId>
-      <version>3.2.3</version>
-    </dependency>
+    <!--&lt;!&ndash;阿里云短信&ndash;&gt;-->
+    <!--<dependency>-->
+      <!--<groupId>ali</groupId>-->
+      <!--<artifactId>aliyun-java-sdk-core</artifactId>-->
+      <!--<version>3.2.3</version>-->
+    <!--</dependency>-->
+
+    <!--<dependency>-->
+      <!--<groupId>ali</groupId>-->
+      <!--<artifactId>aliyun-java-sdk-dysmsapi</artifactId>-->
+      <!--<version>1.0.0-SANPSHOT</version>-->
+    <!--</dependency>-->
+
+      <dependency>
+        <groupId>ali</groupId>
+        <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+        <version>1.0.0-SANPSHOT</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/ali/aliyun-java-sdk-dysmsapi/1.0.0-SANPSHOT/aliyun-java-sdk-dysmsapi-1.0.0-SANPSHOT.jar</systemPath>
+      </dependency>
 
     <dependency>
       <groupId>ali</groupId>
-      <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+      <artifactId>aliyun-java-sdk-core</artifactId>
       <version>1.0.0-SANPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/ali/aliyun-java-sdk-core/3.2.3/aliyun-java-sdk-core-3.2.3.jar</systemPath>
     </dependency>
 
   </dependencies>

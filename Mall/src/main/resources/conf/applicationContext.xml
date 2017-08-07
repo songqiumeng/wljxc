@@ -19,14 +19,9 @@
     </context:component-scan>
 
     <!-- 配置文件位置 -->
-    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath:properties/init.properties</value>
-                <value>classpath:properties/log4j.properties</value>
-            </list>
-        </property>
-    </bean>
+    <context:property-placeholder location="classpath:properties/init.properties"/>
+    <context:property-placeholder location="classpath:properties/log4j.properties"/>
+
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="102400"></property>
