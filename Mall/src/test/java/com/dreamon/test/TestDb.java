@@ -1,5 +1,6 @@
 package com.dreamon.test;
 
+import com.dreamon.mall.db.entity.Userinfo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Assert;
@@ -48,6 +49,18 @@ public class TestDb {
         session.getTransaction().commit();
         session.close();
 
+    }
+
+    @Test
+    public void testSaveFunc(){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Userinfo user = new Userinfo("123","123");
+        Object obj = session.save(user);
+        System.out.println(obj);
+        session.getTransaction().commit();
+        session.close();
     }
 
 }

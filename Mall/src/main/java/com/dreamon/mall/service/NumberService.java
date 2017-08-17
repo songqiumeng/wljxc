@@ -46,6 +46,14 @@ public class NumberService {
         return entity.toString();
     }
 
+    /**
+     * 获取编号,随机数
+     * @return
+     */
+    public int getNumber(){
+        return getRandom(numberLength);
+    }
+
     private int getIdLength(int id){
         return (""+id).length();
     }
@@ -57,7 +65,15 @@ public class NumberService {
         return Integer.parseInt(time.substring(time.length()-length ,time.length()));
     }
 
-//    public static void main(String[] args){
+    private int getRandom(int length){
+        int result = 0;
+        for (int i = 0;i<length ;i++){
+            result = (result * 10) + (random.nextInt(9) + 1);
+        }
+        return result;
+    }
+
+    //    public static void main(String[] args){
 //        NumberService service = new NumberService(0);
 //        System.out.println();
 //
@@ -82,13 +98,5 @@ public class NumberService {
 //        start = System.currentTimeMillis();
 //        System.out.println("用时:"+(start - end));
 //    }
-
-    private int getRandom(int length){
-        int result = 0;
-        for (int i = 0;i<length ;i++){
-            result = (result * 10) + (random.nextInt(9) + 1);
-        }
-        return result;
-    }
 
 }

@@ -32,12 +32,13 @@ public class UserController extends BaseController {
                 )
             return new BaseResponse(PARAM_EMPTY,PARAM_EMPTY_STR).toJsonStr();
         try {
-            userModel.login(tel,pwd);
+            int userNumber = userModel.login(tel,pwd);
+            //注册user缓存
+            return new BaseResponse(OK,OK_STR,"userNumber",userNumber).toJsonStr();
         } catch (OutException e){
             e.printStackTrace();
             return new BaseResponse(e.errorCode,e.errorMessage).toJsonStr();
         }
-        return new BaseResponse(OK,OK_STR).toJsonStr();
     }
 
     @RequestMapping(value = "/register")

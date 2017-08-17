@@ -72,13 +72,14 @@ public class UserModel extends BaseModel {
      * 用户登录
      * @param name
      * @param password
+     * @return 用户编号
      * @throws OutException
      */
-    public void login(String name,String password) throws OutException{
+    public int login(String name,String password) throws OutException{
         Userinfo userinfo = userDao.getUserByName(name);
         String inPwd = userinfo.getPassword();
         if (inPwd != null && inPwd.equals(password)){
-            return ;
+            return userinfo.getNumber();
         } else {
             throw new OutException(LG_PASSWORD_WRONG,LG_PASSWORD_WRONG_STR);
         }

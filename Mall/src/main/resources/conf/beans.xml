@@ -30,9 +30,16 @@
         <constructor-arg name="idCodeType" value="${ics.idCodeType}"/>
     </bean>
 
+    <!--随机数对象-->
     <bean id="numberService" class="com.dreamon.mall.service.NumberService">
         <constructor-arg name="numberLength" value="${ran.numberLength}"/>
         <constructor-arg name="numberModel" value="${ran.model.numberOnly}"/>
     </bean>
+
+    <!--map实现的keyvalue容器-->
+    <bean id="keyvaluemap" class="java.util.HashMap" />
+
+    <!--缓存工厂-->
+    <bean id="keyvaluefactory" class="com.dreamon.mall.cache.mapimpl.MapKeyValueFactory"/>
 
 </beans>
