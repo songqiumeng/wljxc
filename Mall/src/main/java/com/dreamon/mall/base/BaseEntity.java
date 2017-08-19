@@ -19,9 +19,7 @@ public abstract class BaseEntity {
         return message;
     }
 
-//    public void setMessage(Map<String, Object> message) {
-//        this.message = message;
-//    }
+
 
     /**
      * 检查传入的index是否合法
@@ -32,7 +30,7 @@ public abstract class BaseEntity {
     }
 
 
-    public void put(String index,String value){
+    public void put(String index,Object value){
         if (!checkIndex(index)){
             throw new IllegalArgumentException();
         }

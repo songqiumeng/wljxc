@@ -2,18 +2,16 @@ package com.dreamon.mall.model;
 
 import com.aliyuncs.exceptions.ClientException;
 import com.dreamon.mall.base.BaseModel;
-import com.dreamon.mall.base.BaseResponse;
 import com.dreamon.mall.db.dao.UserDao;
 import com.dreamon.mall.db.entity.Userinfo;
-import com.dreamon.mall.exception.DaoException;
-import com.dreamon.mall.exception.IllegalArguementException;
-import com.dreamon.mall.exception.MessageException;
-import com.dreamon.mall.exception.OutException;
+import com.dreamon.mall.exception.*;
+import com.dreamon.mall.service.EncryptService;
 import com.dreamon.mall.service.IdCodeService;
 import com.dreamon.mall.service.MessageService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 
 /**
  * Created by wmt on 2017/7/29.
@@ -29,6 +27,9 @@ public class UserModel extends BaseModel {
 
     @Resource
     private UserDao userDao;
+
+    @Resource
+    private EncryptService service;
 
     /**
      * 获取用户注册验证码
@@ -75,11 +76,33 @@ public class UserModel extends BaseModel {
      * @return 用户编号
      * @throws OutException
      */
-    public int login(String name,String password) throws OutException{
+    public HashMap<String,Object> login(String name, String password) throws OutException{
         Userinfo userinfo = userDao.getUserByName(name);
         String inPwd = userinfo.getPassword();
-        if (inPwd != null && inPwd.equals(password)){
-            return userinfo.getNumber();
+        //解密密码
+        String outPwd = "";
+        try {
+             outPwd = service.loginDecrypt(password);
+        } catch (EncryptException e){
+            e.printStackTrace();
+            throw new OutException(LG_SERVICE_FAIL,LG_SERVICE_FAIL_STR);
+        }
+        if (inPwd != null && inPwd.equals(outPwd)){//登陆成功
+            //获取公钥
+            try {
+                HashMap<String,String> keys = service.getLoginKeys();
+                //TODO 注册缓存
+                //拼装返回结果
+                HashMap<String,Object> result = new HashMap<String, Object>();
+                result.put("userNumber",userinfo.getId());
+                result.put("publicKey",keys.get(EncryptService.PUBLIC_KEY_INDEX));
+                result.put("modulus",keys.get(EncryptService.MODULUS_INDEX));
+                return result;
+            } catch (EncryptException e){
+                e.printStackTrace();
+                throw new OutException(LG_SERVICE_FAIL,LG_SERVICE_FAIL_STR);
+            }
+
         } else {
             throw new OutException(LG_PASSWORD_WRONG,LG_PASSWORD_WRONG_STR);
         }

@@ -15,6 +15,13 @@ public class NumberService {
     private final int numberModel;
     private Random random = new Random();
 
+    //ID计数器
+    private static int count = 0;
+
+    public int getCout(){
+        return count ++;
+    }
+
     public NumberService(int numberLength,int numberModel) {
         this.numberLength = numberLength;
         this.numberModel = numberModel;
@@ -28,6 +35,7 @@ public class NumberService {
      * 不带英语前缀
      */
     public static final int NUMBER_ONLY = 0;
+
 
     /**
      * 获取编号
@@ -44,6 +52,16 @@ public class NumberService {
         entity.setFirst(idLength);
         entity.setMeddile(getRandom(numberLength-idLength-1));
         return entity.toString();
+    }
+
+    /**
+     * 通过number获取id
+     * @param number
+     * @return
+     */
+    public int getId(String number){
+        int length = Integer.parseInt(number.substring(0,1));
+        return Integer.parseInt(number.substring(number.length()-length,number.length()));
     }
 
     /**

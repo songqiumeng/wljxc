@@ -6,7 +6,10 @@ import static org.junit.Assert.*;
 import com.dreamon.mall.base.BaseEntity;
 import com.dreamon.mall.base.BaseException;
 import com.dreamon.mall.db.entity.Demo;
+import com.dreamon.mall.db.entity.GoodType;
+import com.dreamon.mall.db.entity.Store;
 import com.dreamon.mall.db.entity.Userinfo;
+import com.dreamon.mall.exception.DaoException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -38,7 +41,7 @@ public class TestDao {
     @Test
     public void testBaseAdd() {
 //        BaseEntity demo = new Demo(3,"admin","嘿嘿");
-        Userinfo userinfo = new Userinfo("15616034790","123456");
+        Userinfo userinfo = new Userinfo("15616033791","123456");
         try {
             baseDao.add(userinfo);
         } catch (Exception e){
@@ -62,6 +65,30 @@ public class TestDao {
     @Test
     public void testConnection(){
         baseDao.before();
+    }
+
+    @Test
+    public void testUpdate() throws Exception{
+        Store value = new Store();
+        Store param = new Store();
+        value.put("name","宋秋萌的店铺");
+        value.put("contact","宋秋萌的联系人");
+
+        param.put("number",476224964);
+
+        baseDao.update(value,param);
+    }
+
+    @Test
+    public void testDelete(){
+        GoodType goodType = new GoodType();
+        goodType.setId(3);
+        baseDao.delete(goodType);
+    }
+
+    @Test
+    public void testGetAll2(){
+        System.out.println(baseDao.getAll(GoodType.class,0,0));
     }
 
 }

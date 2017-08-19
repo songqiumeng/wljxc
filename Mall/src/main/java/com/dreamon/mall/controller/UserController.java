@@ -2,6 +2,7 @@ package com.dreamon.mall.controller;
 
 import com.dreamon.mall.base.BaseController;
 import com.dreamon.mall.base.BaseResponse;
+import com.dreamon.mall.db.entity.Userinfo;
 import com.dreamon.mall.exception.OutException;
 import com.dreamon.mall.model.UserModel;
 import com.dreamon.mall.service.IdCodeService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 
 /**
  * 用户相关的控制器
@@ -27,14 +29,13 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/login")
     @ResponseBody
     public String login(String tel,String pwd){
-        if (tel ==null || tel.length() == 0||
+        if (tel == null || tel.length() == 0||
                 pwd == null || pwd.length() == 0
                 )
             return new BaseResponse(PARAM_EMPTY,PARAM_EMPTY_STR).toJsonStr();
         try {
-            int userNumber = userModel.login(tel,pwd);
-            //注册user缓存
-            return new BaseResponse(OK,OK_STR,"userNumber",userNumber).toJsonStr();
+            HashMap<String,Object> userNumber = userModel.login(tel,pwd);
+            return new BaseResponse(OK,OK_STR,userNumber).toJsonStr();
         } catch (OutException e){
             e.printStackTrace();
             return new BaseResponse(e.errorCode,e.errorMessage).toJsonStr();
@@ -57,6 +58,8 @@ public class UserController extends BaseController {
         }
 
         return new BaseResponse(OK,OK_STR).toJsonStr();
+
+
     }
 
     /**

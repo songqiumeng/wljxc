@@ -1,6 +1,7 @@
 package com.dreamon.mall.cache;
 
 import com.dreamon.mall.cache.eneity.UserValueEntity;
+import com.dreamon.mall.db.entity.Userinfo;
 import com.dreamon.mall.exception.KeyValueException;
 
 /**

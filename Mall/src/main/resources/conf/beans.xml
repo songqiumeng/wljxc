@@ -42,4 +42,11 @@
     <!--缓存工厂-->
     <bean id="keyvaluefactory" class="com.dreamon.mall.cache.mapimpl.MapKeyValueFactory"/>
 
+    <!--加密service-->
+    <bean id="encryptService" class="com.dreamon.mall.service.EncryptService">
+        <constructor-arg name="loginKey" value="{$safe.loginkey}"/>
+        <constructor-arg name="requestKey" value="${safe.requesttoken}"/>
+        <constructor-arg name="numberLength" value="${ran.numberLength}"/>
+    </bean>
+
 </beans>

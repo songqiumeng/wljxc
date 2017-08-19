@@ -2,10 +2,6 @@ package com.dreamon.mall.base;
 
 import com.dreamon.mall.exception.DaoException;
 import com.dreamon.mall.exception.IllegalArguementException;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.hibernate.JDBCException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -64,6 +60,13 @@ public class BaseDao implements Status {
         return result;
     }
 
+    /**
+     * 条件查询
+     * @param entity
+     * @param pageIdex
+     * @param pageSize
+     * @return
+     */
     public List<BaseEntity> getAll(BaseEntity entity,int pageIdex,int pageSize){
         before();
         Query query = toSelectSql(entity.getMessage(),entity.getClass());
@@ -75,6 +78,46 @@ public class BaseDao implements Status {
         List list = query.list();
         after();
         return list;
+    }
+
+    /**
+     * 获取表中全部的数据
+     * @param cls
+     * @param pageIndex
+     * @param pageSize
+     * @return
+     */
+    public List<BaseEntity> getAll(Class cls,int pageIndex,int pageSize){
+        before();
+        String sql = "from "+ cls.getName();
+        Query query = session.createQuery(sql);
+        if (pageIndex >= 0 && pageSize > 0) {
+            //设置分页
+            query.setFirstResult(pageIndex*pageSize);
+            query.setMaxResults(pageSize);
+        }
+        List list = query.list();
+        after();
+        return list;
+    }
+
+    /**
+     * 更新数据
+     * @param value
+     * @param param
+     * @throws IllegalArguementException
+     */
+    public void update(BaseEntity value, BaseEntity param) throws IllegalArguementException{
+        before();
+        Query query = toUpdateSql(value.getMessage(),param.getMessage(),value.getClass());
+        query.executeUpdate();
+        after();
+    }
+
+    public void delete(BaseEntity entity) {
+        before();
+        session.delete(entity);
+        after();
     }
 
     /**

@@ -6,4 +6,8 @@ package com.dreamon.mall.service;
  */
 public class UserIdService {
 
+//    public void checkUserForOpenStore(){
+//
+//    }
+
 }

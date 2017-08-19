@@ -22,6 +22,8 @@ public interface Status {
     String LG_USER_NOT_EXITED_STR = "用户不存在";
     int LG_PASSWORD_WRONG = 251;
     String LG_PASSWORD_WRONG_STR = "密码错误";
+    int LG_SERVICE_FAIL = 252;
+    String LG_SERVICE_FAIL_STR = "登陆服务出现异常";
 
     int PARAM_EMPTY = 400;
     String PARAM_EMPTY_STR = "参数不完整";
@@ -49,4 +51,30 @@ public interface Status {
     int DB_ADD_FAIL = 601;
     String DB_ADD_FAIL_STR = "插入数据库时出现异常导致插入失败";
 
+    //安全相关的问题
+    int SAFE_DES_EXCP = 700;
+    String SAFE_DES_EXCP_STR = "登陆解密是DES算法异常";
+
+    int SAFE_NO_SUCH_ALGORITHM = 701;
+    String SAFE_NO_SUCH_ALGORITHM_STR = "NoSuchAlgorithmException";
+
+    int SAFE_RSA_DECRYPT_FAIL = 702;
+    String SAFE_RSA_DECRYPT_FAIL_STR = "RSA解密时出现异常";
+
+    //店铺相关状态
+    int STORE_ADD_FAIL = 750;
+    String STORE_ADD_FAIL_STR = "店铺添加失败,失败原因未知";
+
+    int STORE_ADD_LACK_PARAM = 751;
+    String STORE_ADD_LACK_PARAM_STR = "店铺添加失败，失败原因：参数错误";
+
+    int STORE_DELETE_FAIL = 752;
+    String STORE_DELETE_FAIL_STR = "店铺删除失败";
+
+    //商品相关的状态码
+    int GOODTYPE_PARENT_NOT_EXITED = 800;
+    String GOODTYPE_PARENT_NOT_EXITED_STR = "父类型不存在";
+
+    int GOODTYPE_ADD_FAIL = 801;
+    String GOODTYPE_ADD_FAIL_STR = "添加商品失败";
 }

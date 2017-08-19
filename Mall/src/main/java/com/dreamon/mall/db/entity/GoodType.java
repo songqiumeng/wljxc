@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class GoodType extends BaseEntity {
 
     static {
-        String[] indexes = {"id","name","number","level","parent"
+        String[] indexes = {"id","name","number","level","parent","typeimg"
         };
         for (String index :
                 indexes) {
@@ -28,36 +28,26 @@ public class GoodType extends BaseEntity {
     private int number;
     private int level;
     private int parent;
+    private int typeimg;
 
-    @Override
-    public String toString() {
-        return "GoodType{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", number=" + number +
-                ", level=" + level +
-                ", parent=" + parent +
-                '}';
-    }
-
-    public GoodType(String name, int number, int level, int parent) {
-        this.name = name;
-        this.number = number;
-        this.level = level;
-        this.parent = parent;
-    }
-
-    public GoodType() {
-
-    }
-
-    public GoodType(int id, String name, int number, int level, int parent) {
-
+    public GoodType(int id, String name, int number, int level, int parent, int typeimg) {
         this.id = id;
         this.name = name;
         this.number = number;
         this.level = level;
         this.parent = parent;
+        this.typeimg = typeimg;
+    }
+
+    public GoodType(String name, int number, int level, int parent, int typeimg) {
+        this.name = name;
+        this.number = number;
+        this.level = level;
+        this.parent = parent;
+        this.typeimg = typeimg;
+    }
+
+    public GoodType() {
     }
 
     @Override
@@ -90,6 +80,18 @@ public class GoodType extends BaseEntity {
         return level;
     }
 
+    @Override
+    public String toString() {
+        return "GoodType{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", number=" + number +
+                ", level=" + level +
+                ", parent=" + parent +
+                ", typeimg=" + typeimg +
+                '}';
+    }
+
     public void setLevel(int level) {
         this.level = level;
     }
@@ -100,5 +102,13 @@ public class GoodType extends BaseEntity {
 
     public void setParent(int parent) {
         this.parent = parent;
+    }
+
+    public int getTypeimg() {
+        return typeimg;
+    }
+
+    public void setTypeimg(int typeimg) {
+        this.typeimg = typeimg;
     }
 }

@@ -24,7 +24,8 @@ create table wljxc_goodtype(
 	name varchar(255) not null,
 	number int not null,
 	level int not null default 0 comment '商品类型级别',
-	parent int not null default 0 comment '父类型的id'
+	parent int not null default 0 comment '父类型的id',
+	tpyeimg int not null default 0 comment '类图首页图'
 ) charset=utf8;
 
 #图片表
@@ -53,7 +54,8 @@ create table wljxc_store(
 	locationX double,
 	locationY double,
 	other text comment '其他信息，json格式',
-	keyword text comment '关键词 json格式'
+	keyword text comment '关键词 json格式',
+	isdelete tinyint not null default 0
 ) charset=utf8;
 
 #商品表

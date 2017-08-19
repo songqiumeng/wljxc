@@ -21,7 +21,8 @@
     <!-- 配置文件位置 -->
     <context:property-placeholder location="classpath:properties/init.properties"/>
     <context:property-placeholder location="classpath:properties/log4j.properties"/>
-    <context:property-placeholder location="classpath:properties/cache.properties"/>
+    <!--<context:property-placeholder location="classpath:properties/cache.properties"/>-->
+    <!--<context:property-placeholder location="classpath:properties/safe.properties"/>-->
 
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
