@@ -28,19 +28,4 @@ public class GoodTypeDao extends BaseDao{
         add(goodType);
     }
 
-    /**
-     * 更改类型名称
-     * @param typeid
-     * @param name
-     */
-    public void changeTypeName(int typeid,String name) throws IllegalArguementException{
-        GoodType value = new GoodType();
-        GoodType param = new GoodType();
-
-        value.put("name",name);
-        param.put("id",typeid);
-
-        update(value,param);
-    }
-
 }

@@ -91,7 +91,8 @@ create table wljxc_good(
 	comprice double default 0.0 comment '统计价格',
 	instore int comment '进货量',
 	outstore int comment '出货量',
-	request int comment '预期需求量'
+	request int comment '预期需求量',
+	isdelete int not null default 0
 ) charset=utf8;
 
 

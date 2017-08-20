@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class GoodType extends BaseEntity {
 
     static {
-        String[] indexes = {"id","name","number","level","parent","typeimg"
+        String[] indexes = {"id","name","number","level","parent","typeimg","isdelete"
         };
         for (String index :
                 indexes) {

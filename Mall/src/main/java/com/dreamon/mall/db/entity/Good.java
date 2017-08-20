@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import java.util.HashMap;
 
 /**
  * Created by qiumengsong on 2017/8/6.
@@ -19,7 +20,8 @@ public class Good extends BaseEntity {
                 "userid","storeid","monthnumber","totalnumber","commentnumber",
                 "good","meddile","bad",
                 "instore","outstore","request","aveprice",
-                "comprice","lrl","name","guige","txm","content","typelist","cpbh","cpxlh","xsdw","package","uptime"
+                "comprice","lrl","name","guige","txm","content","typelist","cpbh",
+                "cpxlh","xsdw","package","uptime","isdelete"
         };
         for (String index :
                 indexes) {
@@ -405,5 +407,41 @@ public class Good extends BaseEntity {
     }
 
     private Timestamp uptime;
+
+    public HashMap<String,String> toHashMap(){
+        HashMap<String,String> line = new HashMap<String, String>();
+        line.put("id",getId() + "");
+        line.put("name",getName());
+        line.put("goodtype",getGoodtype() + "");
+        line.put("store",getStore() + "");
+        line.put("guige",getGuige());
+        line.put("txm",getTxm());
+        line.put("viewprice",getViewprice() + "");
+        line.put("inprice",getInprice() + "");
+        line.put("other","");//TODO 缺少other字段
+        line.put("storeid",getStoreid() + "");
+        line.put("content",getContent());
+        line.put("typelist",getTypelist());
+        line.put("monthnumber",getMonthnumber()+"");
+        line.put("totalnumber",getTotalnumber()+"");
+        line.put("commontnumber",getCommentnumber() + "");
+        line.put("good",getGood()+"");
+        line.put("meddile",getMeddile() + "");
+        line.put("bad",getBad() + "");
+        line.put("cpbh",getCpbh());
+        line.put("cpxlh",getCpxlh());
+        line.put("xsdw",getXsdw());
+        line.put("package",getPacKage());
+        line.put("color","");//TODO 缺少颜色
+        line.put("uptime",getUptime().toString() );
+        line.put("lrl",getLrl() + "");
+        line.put("aveprice",getAveprice() + "");
+        line.put("comprice",getComprice() + "");
+        line.put("instore",getInstore() + "");
+        line.put("outstore",getOutstore() + "");
+        line.put("request",getRequest() + "");
+        return line;
+    }
+
 
 }

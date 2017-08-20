@@ -24,9 +24,9 @@ public class TestGoodTypeDao {
         goodTypeDao.addType("海鲜",1,23);
     }
 
-    @Test
-    public void testChange() throws Exception{
-        goodTypeDao.changeTypeName(2,"生鲜哈哈");
-    }
+//    @Test
+//    public void testChange() throws Exception{
+//        goodTypeDao.changeTypeName(2,"生鲜哈哈");
+//    }
 
 }

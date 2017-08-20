@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 
 /**
  * Created by qiumengsong on 2017/8/19.
@@ -52,7 +53,7 @@ public class StoreController extends BaseController {
         }
     }
 
-    @RequestMapping(value = "deletestore")
+    @RequestMapping(value = "/deletestore")
     @ResponseBody
     public String deleteStore(int userid,int storeId) {
         if (userid == 0 || storeId == 0){
@@ -67,19 +68,19 @@ public class StoreController extends BaseController {
         }
     }
 
+    @RequestMapping(value = "/getstorebyuserid")
+    @ResponseBody
     public String getStoreByUserId(int userId){
         if (userId == 0){
             return new BaseResponse(PARAM_EMPTY,PARAM_EMPTY_STR).toJsonStr();
         }
         try {
-            storeModel.getStoreByUserId(userId);
-            return new BaseResponse(OK,OK_STR).toJsonStr();
+            HashMap<String,Object> result = storeModel.getStoreByUserId(userId);
+            return new BaseResponse(OK,OK_STR,result).toJsonStr();
         } catch (OutException e){
             e.printStackTrace();
             return new BaseResponse(e.errorCode,e.errorMessage).toJsonStr();
         }
-
-
     }
 
 }

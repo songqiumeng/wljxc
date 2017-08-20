@@ -77,4 +77,14 @@ public interface Status {
 
     int GOODTYPE_ADD_FAIL = 801;
     String GOODTYPE_ADD_FAIL_STR = "添加商品失败";
+
+    int GOODTYPE_NAME_UPDATE_FAIL = 802;
+    String GOODTYPE_NAME_UPDATE_FAIL_STR = "种类名字更改失败";
+
+    int GOOD_ADD_FAIL = 803;
+    String  GOOD_ADD_FAIL_STR = "商品添加失败";
+
+    int GOOD_DELETE_FAIL = 804;
+    String  GOOD_DELETE_FAIL_STR = "商品删除失败";
+
 }
