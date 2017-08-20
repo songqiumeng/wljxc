@@ -69,7 +69,7 @@ public class GoodModel extends BaseModel {
      * @param pageSize
      * @return
      */
-    public HashMap<String,Object> getAll(int pageIndex, int pageSize){
+    public HashMap<String,Object> getAllType(int pageIndex, int pageSize){
         List<BaseEntity> list = goodTypeDao.getAll(GoodType.class,pageIndex,pageSize);
         HashMap<String,Object> result = new HashMap<String, Object>();
         ArrayList<HashMap<String,String>> content = new ArrayList<HashMap<String, String>>();
@@ -167,42 +167,27 @@ public class GoodModel extends BaseModel {
         for (BaseEntity entity :
                 goods) {
             Good good = (Good)entity;
-            HashMap<String,String> line = new HashMap<String, String>();
-            line.put("id",good.getId() + "");
-            line.put("name",good.getName());
-            line.put("goodtype",good.getGoodtype() + "");
-            line.put("store",good.getStore() + "");
-            line.put("guige",good.getGuige());
-            line.put("txm",good.getTxm());
-            line.put("viewprice",good.getViewprice() + "");
-            line.put("inprice",good.getInprice() + "");
-            line.put("other","");//TODO 缺少other字段
-            line.put("storeid",good.getStoreid() + "");
-            line.put("content",good.getContent());
-            line.put("typelist",good.getTypelist());
-            line.put("monthnumber",good.getMonthnumber()+"");
-            line.put("totalnumber",good.getTotalnumber()+"");
-            line.put("commontnumber",good.getCommentnumber() + "");
-            line.put("good",good.getGood()+"");
-            line.put("meddile",good.getMeddile() + "");
-            line.put("bad",good.getBad() + "");
-            line.put("cpbh",good.getCpbh());
-            line.put("cpxlh",good.getCpxlh());
-            line.put("xsdw",good.getXsdw());
-            line.put("package",good.getPacKage());
-            line.put("color","");//TODO 缺少颜色
-            line.put("uptime",good.getUptime().toString() );
-            line.put("lrl",good.getLrl() + "");
-            line.put("aveprice",good.getAveprice() + "");
-            line.put("comprice",good.getComprice() + "");
-            line.put("instore",good.getInstore() + "");
-            line.put("outstore",good.getOutstore() + "");
-            line.put("request",good.getRequest() + "");
+            content.add(good.toHashMap());
         }
-        return null;
+        HashMap<String,Object> result = new HashMap<String, Object>();
+        result.put("content",content);
+        return result;
     }
 
-    public HashMap<String,Object> getGoodsByUserid(){
-        return null;
+    public HashMap<String,Object> getGoodsByUserid(int userid){
+        Good good = new Good();
+        good.put("userid",userid);
+        List<BaseEntity> goods = goodDao.getAll(good,0,0);
+        //转换成json
+        List<HashMap<String,String>> content = new ArrayList<HashMap<String, String>>();
+        for (BaseEntity entity :
+                goods) {
+            good = (Good)entity;
+            content.add(good.toHashMap());
+        }
+        HashMap<String,Object> result = new HashMap<String, Object>();
+        result.put("content",content);
+        return result;
     }
+
 }

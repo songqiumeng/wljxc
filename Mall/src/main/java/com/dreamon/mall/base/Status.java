@@ -28,6 +28,9 @@ public interface Status {
     int PARAM_EMPTY = 400;
     String PARAM_EMPTY_STR = "参数不完整";
 
+    int PARAM_FORMAT_WRONG = 401;
+    String PARAM_FORMAT_WRONG_STR = "参数格式错误";
+
     //短信相关状态
     int MSG_SEND_FAIL = 500;
     String MSG_SEND_FAIL_STR = "验证码短信发送失败";
