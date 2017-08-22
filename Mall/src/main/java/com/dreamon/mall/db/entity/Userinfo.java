@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -237,5 +238,27 @@ public class Userinfo extends BaseEntity {
                 ", headImg=" + headImg +
                 ", headImgUrl='" + headImgUrl + '\'' +
                 '}';
+    }
+
+    @Override
+    public HashMap<String, String> toHashMap() {
+        HashMap<String, String> line = new HashMap<String, String>();
+        line.put("id",getId()+"");
+        line.put("number",getNumber()+"");
+        line.put("name",getName());
+        line.put("password",getPassword());
+        line.put("realname",getRealname());
+        line.put("nickname",getNickname());
+        line.put("state",getState()+"");
+        line.put("type",getType()+"");
+        line.put("address",getAddress());
+        line.put("phone",getPhone());
+        line.put("email",getEmail());
+        line.put("contact",getContact());
+        line.put("totalLimit",getTotalLimit()+"");
+        line.put("useLimit",getUseLimit()+"");
+        line.put("headImg",getHeadImg()+"");
+        line.put("headImgUrl",getHeadImgUrl());
+        return line;
     }
 }

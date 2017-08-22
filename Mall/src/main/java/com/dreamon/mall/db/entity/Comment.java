@@ -5,6 +5,7 @@ import com.dreamon.mall.base.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashMap;
 
 /**
  * Created by qiumengsong on 2017/8/6.
@@ -136,5 +137,20 @@ public class Comment extends BaseEntity {
 
     public void setOther(String other) {
         this.other = other;
+    }
+
+
+    @Override
+    public HashMap<String, String> toHashMap() {
+        HashMap<String, String> line = new HashMap<String, String>();
+        line.put("id", getId() + "");
+        line.put("userid",getUserid()+"");
+        line.put("goodid",getGoodid()+"");
+        line.put("score",getScore()+"");
+        line.put("type",getType()+"");
+        line.put("comment",getComment());
+        line.put("response",getResponse());
+        line.put("other",getOther());
+        return line;
     }
 }

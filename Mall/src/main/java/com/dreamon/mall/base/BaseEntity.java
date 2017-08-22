@@ -39,4 +39,7 @@ public abstract class BaseEntity {
 
     public abstract int getId();
     public abstract void setId(int id);
+
+    public abstract HashMap<String,String> toHashMap();
+
 }

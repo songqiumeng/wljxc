@@ -25,6 +25,11 @@ public interface Status {
     int LG_SERVICE_FAIL = 252;
     String LG_SERVICE_FAIL_STR = "登陆服务出现异常";
 
+    //用户状态
+    int USER_MODIFY_FAIL=300;
+    String USER_MODIFY_FAIL_STR="修改用户信息失败";
+
+    //参数状态
     int PARAM_EMPTY = 400;
     String PARAM_EMPTY_STR = "参数不完整";
 

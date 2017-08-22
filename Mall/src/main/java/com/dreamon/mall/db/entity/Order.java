@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import java.util.HashMap;
 
 /**
  * Created by qiumengsong on 2017/8/6.
@@ -149,5 +150,20 @@ public class Order extends BaseEntity {
 
     public void setAddtime(Timestamp addtime) {
         this.addtime = addtime;
+    }
+
+    @Override
+    public HashMap<String, String> toHashMap() {
+        HashMap<String, String> line = new HashMap<String, String>();
+        line.put("id",getId()+"");
+        line.put("number",getNumber()+"");
+        line.put("userid",getUserid()+"");
+        line.put("shopid",getShopid()+"");
+        line.put("goodnumber",getGoodnumber()+"");
+        line.put("viewprice",getViewprice()+"");
+        line.put("price",getPrice()+"");
+        line.put("state",getState()+"");
+        line.put("addtime",getAddtime()+"");
+        return line;
     }
 }

@@ -5,6 +5,7 @@ import com.dreamon.mall.base.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashMap;
 
 /**
  * Created by qiumengsong on 2017/8/6.
@@ -248,4 +249,26 @@ public class Store extends BaseEntity {
     private String other;
     private String keyword;
 
+    @Override
+    public HashMap<String, String> toHashMap() {
+        HashMap<String, String> line = new HashMap<String, String>();
+        line.put("id",getId()+"");
+        line.put("number",getNumber()+"");
+        line.put("userid",getUserid()+"");
+        line.put("level",getLevel()+"");
+        line.put("headimg",getHeadimg()+"");
+        line.put("isgood",getIsgood()+"");
+        line.put("hascut",getHascut()+"");
+        line.put("hastip",getHastip()+"");
+        line.put("score",getScore()+"");
+        line.put("total",getTotal()+"");
+        line.put("locationX",getLocationX()+"");
+        line.put("locationY",getLocationY()+"");
+        line.put("name",getName());
+        line.put("contact",getContact());
+        line.put("phone",getPhone());
+        line.put("other",getOther());
+        line.put("keyword",getKeyword());
+        return line;
+    }
 }

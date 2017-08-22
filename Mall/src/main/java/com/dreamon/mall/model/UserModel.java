@@ -108,4 +108,25 @@ public class UserModel extends BaseModel {
         }
     }
 
+    /**
+     *
+     * @param idInt
+     * @param headimgInt
+     * @param nickname
+     * @param address
+     * @param telephone
+     * @param password
+     * @throws OutException
+     */
+    public void modifyUserInfobyId(int idInt ,int headimgInt, String nickname, String address, String telephone, String password)throws OutException{
+
+        try {
+            userDao.modifyUserInfobyId(idInt,headimgInt,nickname,address,telephone,password);
+        } catch (IllegalArguementException e){
+            e.printStackTrace();
+            throw new OutException(USER_MODIFY_FAIL,USER_MODIFY_FAIL_STR);
+        }
+    }
+
+
 }

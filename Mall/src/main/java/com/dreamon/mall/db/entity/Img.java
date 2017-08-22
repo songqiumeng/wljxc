@@ -5,6 +5,7 @@ import com.dreamon.mall.base.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashMap;
 
 /**
  * Created by qiumengsong on 2017/8/6.
@@ -87,5 +88,15 @@ public class Img extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public HashMap<String, String> toHashMap() {
+        HashMap<String, String> line = new HashMap<String, String>();
+        line.put("id",getId()+"");
+        line.put("path",getPath());
+        line.put("url",getUrl());
+        line.put("name",getName());
+        return line;
     }
 }

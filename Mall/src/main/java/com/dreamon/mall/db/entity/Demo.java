@@ -5,6 +5,7 @@ import com.dreamon.mall.base.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashMap;
 
 /**
  * Created by qiumengsong on 2017/7/28.
@@ -71,5 +72,14 @@ public class Demo extends BaseEntity{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public HashMap<String, String> toHashMap() {
+        HashMap<String, String> line = new HashMap<String, String>();
+        line.put("id",getId()+"");
+        line.put("name",getName());
+        line.put("password",getName());
+        return line;
     }
 }

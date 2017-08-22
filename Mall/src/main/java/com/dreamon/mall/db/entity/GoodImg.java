@@ -5,6 +5,7 @@ import com.dreamon.mall.base.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashMap;
 
 /**
  * Created by qiumengsong on 2017/8/6.
@@ -73,5 +74,14 @@ public class GoodImg extends BaseEntity {
 
     public void setImgid(int imgid) {
         this.imgid = imgid;
+    }
+
+    @Override
+    public HashMap<String, String> toHashMap() {
+        HashMap<String, String> line = new HashMap<String, String>();
+        line.put("id",getId()+"");
+        line.put("goodid",getGoodid()+"");
+        line.put("imgid",getImgid()+"");
+        return line;
     }
 }

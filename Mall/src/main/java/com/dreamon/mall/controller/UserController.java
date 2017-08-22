@@ -104,4 +104,36 @@ public class UserController extends BaseController {
         return new BaseResponse(OK,OK_STR).toJsonStr();
     }
 
+    @ResponseBody
+    @RequestMapping("/modifyuserinfo")
+    public String modifyUserInfobyId(String id, String headimg, String nickname, String address, String telephone, String password) {
+        if (id == null || id.length() == 0 ||
+                headimg == null || headimg.length() == 0 ||
+                nickname == null || nickname.length() == 0 ||
+                address == null || address.length() == 0 ||
+                telephone == null || telephone.length() == 0 ||
+                password == null || password.length() == 0
+
+                ) {
+            return new BaseResponse(PARAM_EMPTY, PARAM_EMPTY_STR).toJsonStr();
+        }
+        int idInt = 0;
+        int headimgInt = 0;
+        try {
+            idInt = Integer.parseInt(id);
+            headimgInt = Integer.parseInt(headimg);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return new BaseResponse(PARAM_FORMAT_WRONG, PARAM_FORMAT_WRONG_STR).toJsonStr();
+        }
+
+        try {
+            userModel.modifyUserInfobyId(idInt, headimgInt, nickname, address, telephone, password);
+        } catch (OutException e) {
+            e.printStackTrace();
+            return new BaseResponse(e.errorCode, e.errorMessage).toJsonStr();
+        }
+        return new BaseResponse(OK, OK_STR).toJsonStr();
+    }
+
 }

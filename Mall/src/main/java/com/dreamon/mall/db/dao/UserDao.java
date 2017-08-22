@@ -56,4 +56,28 @@ public class UserDao extends BaseDao {
         }
     }
 
+    /**
+     * 修改用户信息
+     * @param idInt
+     * @param headimgInt
+     * @param nickname
+     * @param address
+     * @param telephone
+     * @param password
+     * @throws IllegalArguementException
+     */
+    public void modifyUserInfobyId(int idInt,int headimgInt, String nickname, String address, String telephone, String password) throws IllegalArguementException{
+        Userinfo value = new Userinfo();
+        value.put("headimgInt",headimgInt);
+        value.put("nickname",nickname);
+        value.put("address",address);
+        value.put("phone",telephone);
+        value.put("password",password);
+
+        Userinfo param=new Userinfo();
+        param.put("id",idInt);
+        //param是搜索条件，value是修改的后的内容
+        update(value,param);
+    }
+
 }
