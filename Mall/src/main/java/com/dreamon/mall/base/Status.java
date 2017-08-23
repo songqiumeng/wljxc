@@ -95,11 +95,17 @@ public interface Status {
     int GOOD_DELETE_FAIL = 804;
     String  GOOD_DELETE_FAIL_STR = "商品删除失败";
 
+    int GOOD_UPDATA_FAIL=805;
+    String GOOD_UPDATA_FAIL_STR="更改商品信息失败";
+
+
     //购物车相关的状态码
-    int SHOPPINGCAR_ADD_FAIL = 805;
+    int SHOPPINGCAR_ADD_FAIL = 855;
     String SHOPPING_ADD_FAIL_STR = "添加购物车失败";
 
-    int SHOPPINGCAR_ADD_LACK_PARAM = 806;
+    int SHOPPINGCAR_ADD_LACK_PARAM = 856;
     String SHOPPINGCAR_ADD_LACK_PARAM_STR = "添加购物车失败，失败原因：参数错误";
+
+
 
 }
